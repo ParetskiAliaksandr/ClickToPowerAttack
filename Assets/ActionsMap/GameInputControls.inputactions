@@ -1,0 +1,62 @@
+{
+    "name": "GameInputControls",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "fed71db7-7485-41ed-a6d8-00ed119868e1",
+            "actions": [
+                {
+                    "name": "Touch",
+                    "type": "Button",
+                    "id": "06187ab9-1cab-4a92-9370-c2be812aa83e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "247219dd-6bab-4af9-a933-70050d41dc07",
+                    "path": "<Touchscreen>/primaryTouch/tap",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "f7b14579-ffd2-4cf4-bae1-7040257459e4",
+            "actions": [
+                {
+                    "name": "UITouch",
+                    "type": "Button",
+                    "id": "10182662-f60c-4d80-9db7-70de56c721c8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6dc47722-22bc-4a3c-aa39-900609c03f03",
+                    "path": "<Touchscreen>/primaryTouch/tap",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UITouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
