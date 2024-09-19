@@ -45,7 +45,12 @@ public class InputReader : ScriptableObject, GameInputControls.IGameplayActions,
         }
     }
 
-    public void OnUITouch(InputAction.CallbackContext context)
+    public void OnPoint(InputAction.CallbackContext context)
+    {
+        
+    }
+
+    public void OnClick(InputAction.CallbackContext context)
     {
         
     }
