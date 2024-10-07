@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c672606eb94638643a0e1e6c4ed459fe, type: 3}
   m_Name: InputReader
   m_EditorClassIdentifier: 
+  _guid: 882a55ae0d6f4404d8e6ddbc1ec829f4
+  description: Centralised location where all input is read. Any object in need of
+    reading input can reference this SO and just hook into its event delegates.
