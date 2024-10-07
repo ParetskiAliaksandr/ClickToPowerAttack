@@ -6,9 +6,18 @@
             "id": "fed71db7-7485-41ed-a6d8-00ed119868e1",
             "actions": [
                 {
+                    "name": "PositionTouch",
+                    "type": "PassThrough",
+                    "id": "ea085ae9-3654-45b5-a63d-8c731ef7f53a",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Touch",
                     "type": "Button",
-                    "id": "06187ab9-1cab-4a92-9370-c2be812aa83e",
+                    "id": "2309b18f-a2c9-4a43-9f15-77f2f2dfd8a9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -18,8 +27,19 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "247219dd-6bab-4af9-a933-70050d41dc07",
-                    "path": "<Touchscreen>/primaryTouch/tap",
+                    "id": "7599b34b-6f09-4d49-ba67-d83b79917bcd",
+                    "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PositionTouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68b6eb93-de4f-4947-bb40-82ac6bc2a4d0",
+                    "path": "<Touchscreen>/primaryTouch/press",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -34,17 +54,8 @@
             "id": "f7b14579-ffd2-4cf4-bae1-7040257459e4",
             "actions": [
                 {
-                    "name": "Point",
-                    "type": "PassThrough",
-                    "id": "10182662-f60c-4d80-9db7-70de56c721c8",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Click",
-                    "type": "PassThrough",
+                    "name": "UITouch",
+                    "type": "Button",
                     "id": "bd1309ac-d8c6-4d03-b64e-6f246c6a749a",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -55,23 +66,12 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "6dc47722-22bc-4a3c-aa39-900609c03f03",
-                    "path": "<Touchscreen>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Point",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "11b25bb8-b669-4861-b06a-8a76f1406802",
                     "path": "<Touchscreen>/Press",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Click",
+                    "action": "UITouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

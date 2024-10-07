@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [CreateAssetMenu(fileName = "InputReader", menuName = "NewInputSystem/InputReader", order = 51)]
-public class InputReader : ScriptableObject, GameInputControls.IGameplayActions, GameInputControls.IUIActions
+public class InputReader : DescriptionBaseSO, GameInputControls.IGameplayActions, GameInputControls.IUIActions
 {
     private GameInputControls _gameInputControls;
+
+    public event Action<Vector2> onTouchEvent;
 
     private void OnEnable()
     {
@@ -13,44 +16,42 @@ public class InputReader : ScriptableObject, GameInputControls.IGameplayActions,
             _gameInputControls = new GameInputControls();
 
             _gameInputControls.Enable();
+            _gameInputControls.UI.Enable();
+            _gameInputControls.Gameplay.Enable();
 
             _gameInputControls.Gameplay.SetCallbacks(this);
             _gameInputControls.UI.SetCallbacks(this);
-
-            SetGameplay();
         }
     }
 
-    public void SetGameplay()
+    public void EnableGameplayActionMap()
     {
         _gameInputControls.Gameplay.Enable();
-
-        _gameInputControls.UI.Disable();
+        Debug.Log("GamePlayMap Enable");
     }
 
-    public void SetUI()
+    public void DisableGameplayActionMap()
     {
         _gameInputControls.Gameplay.Disable();
-        Debug.Log("GamePlay Disable");
+        Debug.Log("GamePlayMap Disable");
+    }
 
-        _gameInputControls.UI.Enable();
-        Debug.Log("UiPause Enable");
+    //Gameplay
+    public void OnPositionTouch(InputAction.CallbackContext context)
+    {
+        
     }
 
     public void OnTouch(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            Debug.Log("tap");
+            onTouchEvent?.Invoke(_gameInputControls.Gameplay.PositionTouch.ReadValue<Vector2>());
         }
     }
 
-    public void OnPoint(InputAction.CallbackContext context)
-    {
-        
-    }
-
-    public void OnClick(InputAction.CallbackContext context)
+    //UI
+    public void OnUITouch(InputAction.CallbackContext context)
     {
         
     }
@@ -60,8 +61,9 @@ public class InputReader : ScriptableObject, GameInputControls.IGameplayActions,
         _gameInputControls.Gameplay.RemoveCallbacks(this);
         _gameInputControls.UI.RemoveCallbacks(this);
 
+        _gameInputControls.UI.Disable();
+        _gameInputControls.Gameplay.Disable();
+
         _gameInputControls.Disable();
     }
-
-    
 }
