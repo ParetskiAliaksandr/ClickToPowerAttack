@@ -56,6 +56,11 @@ public class InputReader : DescriptionBaseSO, GameInputControls.IGameplayActions
         
     }
 
+    public void OnUIPositionTouch(InputAction.CallbackContext context)
+    {
+        
+    }
+
     private void OnDisable()
     {
         _gameInputControls.Gameplay.RemoveCallbacks(this);
@@ -66,4 +71,6 @@ public class InputReader : DescriptionBaseSO, GameInputControls.IGameplayActions
 
         _gameInputControls.Disable();
     }
+
+    
 }
