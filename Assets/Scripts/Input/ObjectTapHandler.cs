@@ -30,6 +30,10 @@ public class ObjectTapHandler : MonoBehaviour
                 _tapCount = _tapCount + 1;
                 _text.text = _tapCount.ToString();
             }
+            else
+            {
+                Debug.Log("Button is Press!");
+            }
         }
     }
 
