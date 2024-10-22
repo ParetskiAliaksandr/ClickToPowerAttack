@@ -2,12 +2,12 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[CreateAssetMenu(fileName = "InputReader", menuName = "NewInputSystem/InputReader", order = 51)]
-public class InputReader : DescriptionBaseSO, GameInputControls.IGameplayActions, GameInputControls.IUIActions
+[CreateAssetMenu(fileName = "InputReader", menuName = "NewInputSystemSO/InputReader", order = 51)]
+public class InputReaderSO : DescriptionBaseSO, GameInputControls.IGameplayActions, GameInputControls.IUIActions
 {
     private GameInputControls _gameInputControls;
 
-    public event Action<Vector2> onTouchEvent;
+    public event Action<Vector2> onTouchEvent; // Subscription in class ObjectTapHandler
 
     private void OnEnable()
     {
