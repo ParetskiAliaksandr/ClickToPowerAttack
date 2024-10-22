@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class ObjectTapHandler : MonoBehaviour
 {
-    [SerializeField] private InputReader _inputReaderSO;
-    [SerializeField] private List<RectTransform> _uiEllements = new List<RectTransform>();
+    [SerializeField] private InputReaderSO _inputReaderSO;
+    [SerializeField] private List<RectTransform> UIEllements = new List<RectTransform>();
     [SerializeField] private TMP_Text _text;
 
     private int _tapCount;
@@ -23,7 +23,7 @@ public class ObjectTapHandler : MonoBehaviour
 
     public void HandleTapInput(Vector2 touchPosition)
     {
-        foreach (RectTransform uiEllement in _uiEllements)
+        foreach (RectTransform uiEllement in UIEllements)
         {
             if (!RectTransformUtility.RectangleContainsScreenPoint(uiEllement, touchPosition, null))
             {
@@ -33,6 +33,7 @@ public class ObjectTapHandler : MonoBehaviour
             else
             {
                 Debug.Log("Button is Press!");
+                _inputReaderSO.DisableGameplayActionMap();
             }
         }
     }
