@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameInitializer : MonoBehaviour
@@ -6,10 +7,17 @@ public class GameInitializer : MonoBehaviour
 
     private void Awake()
     {
-        InitializeManagers();
+        InitializeEventSystem();
+
+        InitializeScene();
     }
 
-    private void InitializeManagers()
+    private void InitializeScene()
+    {
+        
+    }
+
+    private void InitializeEventSystem()
     {
         _eventSystemSingleton = EventSystemSingleton.Instance;
     }
