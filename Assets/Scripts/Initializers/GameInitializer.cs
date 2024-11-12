@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class GameInitializer : MonoBehaviour
@@ -9,12 +8,12 @@ public class GameInitializer : MonoBehaviour
     {
         InitializeEventSystem();
 
-        InitializeScene();
+        LoadScene();
     }
 
-    private void InitializeScene()
+    private void LoadScene()
     {
-        
+        SceneLoadManager.Instance.LoadScene();
     }
 
     private void InitializeEventSystem()
