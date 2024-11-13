@@ -36,7 +36,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     public virtual void Awake()
     {
         RemoveDuplicates();
-    } 
+    }
 
     private static void SetupInstance()
     {
