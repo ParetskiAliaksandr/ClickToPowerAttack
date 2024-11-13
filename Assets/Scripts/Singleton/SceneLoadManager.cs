@@ -2,8 +2,8 @@
 
 public class SceneLoadManager : Singleton<SceneLoadManager>
 {
-    public void LoadScene()
+    public void LoadScene(SceneNameEnum sceneName)
     {
-        SceneManager.LoadSceneAsync("MainScene");
+        SceneManager.LoadSceneAsync(sceneName.ToString());
     }
 }
