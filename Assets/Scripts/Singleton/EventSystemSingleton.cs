@@ -15,9 +15,7 @@ public class EventSystemSingleton : MonoBehaviour
                 if(_instance == null)
                 {
                     SetupInstance();
-                }
-
-                DontDestroyOnLoad(_instance.gameObject);
+                } 
             }
 
             return _instance;
@@ -36,11 +34,15 @@ public class EventSystemSingleton : MonoBehaviour
         if (eventSystemPrefab != null)
         {
             _instance = Instantiate(eventSystemPrefab).GetComponent<EventSystemSingleton>();
+
+            _instance.gameObject.name = eventSystemPrefab.name + " (Singleton) ";
         }
         else
         {
             Debug.LogError("EventSystem not found in Resources foulder!");
         }
+
+        DontDestroyOnLoad(_instance.gameObject);
     }
 
     private void RemoveDuplicates()

@@ -1,19 +1,20 @@
 using UnityEngine;
 
-public class GameInitializer : MonoBehaviour
+public class ManagerInitializer : MonoBehaviour
 {
     private EventSystemSingleton _eventSystemSingleton;
+    private SceneLoadManager _sceneLoadManager;
 
     private void Awake()
     {
         InitializeEventSystem();
 
-        LoadScene();
+        InitialiizeSceneLoadManager();
     }
 
-    private void LoadScene()
+    private void InitialiizeSceneLoadManager()
     {
-        SceneLoadManager.Instance.LoadScene();
+        _sceneLoadManager = SceneLoadManager.Instance;
     }
 
     private void InitializeEventSystem()
