@@ -1,4 +1,6 @@
+using UnityEngine.SceneManagement;
 using UnityEngine;
+using System;
 
 public class ManagerInitializer : MonoBehaviour
 {
@@ -7,12 +9,19 @@ public class ManagerInitializer : MonoBehaviour
 
     private void Awake()
     {
-        InitializeEventSystem();
+        InitializeOllManagers();
 
-        InitialiizeSceneLoadManager();
+        InitializeGameStart();
     }
 
-    private void InitialiizeSceneLoadManager()
+    private void InitializeOllManagers()
+    {
+        InitializeEventSystem();
+
+        InitializeSceneLoadManager();
+    }
+
+    private void InitializeSceneLoadManager()
     {
         _sceneLoadManager = SceneLoadManager.Instance;
     }
@@ -20,5 +29,16 @@ public class ManagerInitializer : MonoBehaviour
     private void InitializeEventSystem()
     {
         _eventSystemSingleton = EventSystemSingleton.Instance;
+    }
+
+    private void InitializeGameStart()
+    {
+        SceneManager.LoadSceneAsync(SceneNameEnum.LoadingScene.ToString(), LoadSceneMode.Additive)
+            .completed += LoadSceneStart;
+    }
+
+    private void LoadSceneStart(AsyncOperation operation)
+    {
+        _sceneLoadManager.LoadScene(loadScene: SceneNameEnum.MainScene, unloadScene: SceneNameEnum.Initialization);
     }
 }
