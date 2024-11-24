@@ -4,7 +4,8 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static readonly object _lock = new object();
     private static T _instance;
-    private static bool _isShuttingDown = false;
+
+    public static bool _isShuttingDown = false;
 
     public static T Instance
     {

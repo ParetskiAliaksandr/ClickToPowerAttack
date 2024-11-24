@@ -2,4 +2,5 @@
 {
     Initialization,
     MainScene,
+    LoadingScene
 }
