@@ -5,13 +5,18 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     private static readonly object _lock = new object();
     private static T _instance;
 
-    public static bool _isShuttingDown = false;
+    private static bool _isShuttingDown = false;
+    public static bool IsShuttingDown 
+    {
+        get { return _isShuttingDown; }
+        set { _isShuttingDown = value; }
+    }
 
     public static T Instance
     {
         get
         {
-            if (_isShuttingDown)
+            if (IsShuttingDown)
             {
                 Debug.LogWarning($"[Singleton] Instance '{typeof(T)}' already destroyed. Returning null.");
                 return null;
@@ -65,6 +70,6 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        _isShuttingDown = true;
+        IsShuttingDown = true;
     }
 }

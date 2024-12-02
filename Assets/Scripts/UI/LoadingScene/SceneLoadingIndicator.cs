@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,17 +14,11 @@ public class SceneLoadingIndicator : MonoBehaviour
 
     private void OnActivateIndicator(bool isIndicatorActivated)
     {
-        Debug.Log($"Метод OnActivateIndicator сработал!");
-
         _indicator.gameObject.SetActive(isIndicatorActivated);
-
-        DebugUIState();
     }
 
     private void OnUpdateProgressBar(float sceneLoadProgress)
     {
-        Debug.Log($"Метод OnUpdateProgressBar сработал! {sceneLoadProgress}");
-
         if (_spinningIndicator == null)
         {
             Debug.LogError("Spinning Indicator is null. Check assignment.");
@@ -33,30 +26,16 @@ public class SceneLoadingIndicator : MonoBehaviour
         }
 
         _spinningIndicator.fillAmount = sceneLoadProgress;
-
-        DebugUIState();
-    }
-
-    private void DebugUIState()
-    {
-        Debug.Log($"Indicator active: {_indicator?.gameObject.activeSelf}");
-        Debug.Log($"Spinning Indicator active: {_spinningIndicator?.gameObject.activeSelf}");
-        Debug.Log($"Fill Amount: {_spinningIndicator?.fillAmount}");
     }
 
     private void OnDisable()
     {
-        if (SceneLoadManager.Instance == null || SceneLoadManager._isShuttingDown)
+        if (SceneLoadManager.Instance == null || SceneLoadManager.IsShuttingDown)
         {
             return;
         }
 
         SceneLoadManager.Instance.OnSceneLoadProgressChanged -= OnUpdateProgressBar;
         SceneLoadManager.Instance.OnActivateSceneLoadeIndicator -= OnActivateIndicator;
-    }
-
-    private void OnDestroy()
-    {
-        OnDisable();
     }
 }
