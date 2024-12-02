@@ -9,6 +9,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
     public event Action<float> OnSceneLoadProgressChanged;
     public event Action<bool> OnActivateSceneLoadeIndicator;
+    public event Action OnActivateBrightenScreenAnim;
 
     public void LoadScene(SceneNameEnum loadScene, SceneNameEnum unloadScene)
     {
@@ -57,6 +58,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
             Debug.Log("Loade Scene Indicator deactivated!");
 
             OnActivateSceneLoadeIndicator.Invoke(false); // SceneLoadingIndicator
+            OnActivateBrightenScreenAnim.Invoke(); // ScreenFader
 
             Debug.Log("Unload Scene " + unloadSceneName);
 
