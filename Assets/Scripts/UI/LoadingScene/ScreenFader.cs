@@ -7,7 +7,7 @@ public class ScreenFader : MonoBehaviour
 
     private void OnEnable()
     {
-        SceneLoadManager.Instance.OnActivateBrightenScreenAnim += ActivateBrightenScreenAnim;
+        SceneLoadManager.OnActivateBrightenScreenAnim += ActivateBrightenScreenAnim;
 
         _screenFaderAnimator = GetComponent<Animator>();
     }
@@ -24,6 +24,6 @@ public class ScreenFader : MonoBehaviour
             return;
         }
 
-        SceneLoadManager.Instance.OnActivateBrightenScreenAnim -= ActivateBrightenScreenAnim;
+        SceneLoadManager.OnActivateBrightenScreenAnim -= ActivateBrightenScreenAnim;
     }
 }

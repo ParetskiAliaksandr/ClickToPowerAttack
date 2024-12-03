@@ -8,8 +8,8 @@ public class SceneLoadingIndicator : MonoBehaviour
 
     private void OnEnable()
     {
-        SceneLoadManager.Instance.OnSceneLoadProgressChanged += OnUpdateProgressBar;
-        SceneLoadManager.Instance.OnActivateSceneLoadeIndicator += OnActivateIndicator;
+        SceneLoadManager.OnSceneLoadProgressChanged += OnUpdateProgressBar;
+        SceneLoadManager.OnActivateSceneLoadeIndicator += OnActivateIndicator;
     }
 
     private void OnActivateIndicator(bool isIndicatorActivated)
@@ -35,7 +35,7 @@ public class SceneLoadingIndicator : MonoBehaviour
             return;
         }
 
-        SceneLoadManager.Instance.OnSceneLoadProgressChanged -= OnUpdateProgressBar;
-        SceneLoadManager.Instance.OnActivateSceneLoadeIndicator -= OnActivateIndicator;
+        SceneLoadManager.OnSceneLoadProgressChanged -= OnUpdateProgressBar;
+        SceneLoadManager.OnActivateSceneLoadeIndicator -= OnActivateIndicator;
     }
 }
