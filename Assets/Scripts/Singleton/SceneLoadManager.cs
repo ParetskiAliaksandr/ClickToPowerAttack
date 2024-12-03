@@ -7,9 +7,9 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 {
     private float _sceneLoadProgress;
 
-    public event Action<float> OnSceneLoadProgressChanged;
-    public event Action<bool> OnActivateSceneLoadeIndicator;
-    public event Action OnActivateBrightenScreenAnim;
+    public static event Action<float> OnSceneLoadProgressChanged;
+    public static event Action<bool> OnActivateSceneLoadeIndicator;
+    public static event Action OnActivateBrightenScreenAnim;
 
     public void LoadScene(SceneNameEnum loadScene, SceneNameEnum unloadScene)
     {
@@ -25,7 +25,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         operation.allowSceneActivation = false;
 
         Debug.Log("Loade Scene Indicator activated!");
-        OnActivateSceneLoadeIndicator.Invoke(true); // SceneLoadingIndicator
+        OnActivateSceneLoadeIndicator?.Invoke(true); // SceneLoadingIndicator
 
         while (operation.progress < 0.9f)
         {
@@ -42,7 +42,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         _sceneLoadProgress = 1.0f;
 
-        OnSceneLoadProgressChanged.Invoke(_sceneLoadProgress);
+        OnSceneLoadProgressChanged?.Invoke(_sceneLoadProgress); // SceneLoadingIndicator
 
         operation.allowSceneActivation = true;
 
@@ -57,8 +57,8 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         {
             Debug.Log("Loade Scene Indicator deactivated!");
 
-            OnActivateSceneLoadeIndicator.Invoke(false); // SceneLoadingIndicator
-            OnActivateBrightenScreenAnim.Invoke(); // ScreenFader
+            OnActivateSceneLoadeIndicator?.Invoke(false); // SceneLoadingIndicator
+            OnActivateBrightenScreenAnim?.Invoke(); // ScreenFader
 
             Debug.Log("Unload Scene " + unloadSceneName);
 
