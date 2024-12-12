@@ -18,7 +18,7 @@ public class ObjectTapHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        _inputReaderSO.onTouchEvent += HandleTapInput;
+        _inputReaderSO.OnTouchEvent += HandleTapInput;
     }
 
     public void HandleTapInput(Vector2 touchPosition)
@@ -40,6 +40,6 @@ public class ObjectTapHandler : MonoBehaviour
 
     private void OnDisable()
     {
-        _inputReaderSO.onTouchEvent -= HandleTapInput;
+        _inputReaderSO.OnTouchEvent -= HandleTapInput;
     }
 }

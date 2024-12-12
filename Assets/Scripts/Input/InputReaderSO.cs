@@ -7,7 +7,7 @@ public class InputReaderSO : DescriptionBaseSO, GameInputControls.IGameplayActio
 {
     private GameInputControls _gameInputControls;
 
-    public event Action<Vector2> onTouchEvent; // Subscription in class ObjectTapHandler
+    public event Action<Vector2> OnTouchEvent; // Subscription in class ObjectTapHandler
 
     private void OnEnable()
     {
@@ -46,7 +46,7 @@ public class InputReaderSO : DescriptionBaseSO, GameInputControls.IGameplayActio
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            onTouchEvent?.Invoke(_gameInputControls.Gameplay.PositionTouch.ReadValue<Vector2>());
+            OnTouchEvent?.Invoke(_gameInputControls.Gameplay.PositionTouch.ReadValue<Vector2>());
         }
     }
 

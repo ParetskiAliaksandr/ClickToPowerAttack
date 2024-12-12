@@ -7,9 +7,9 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 {
     private float _sceneLoadProgress;
 
-    public static event Action<float> OnSceneLoadProgressChanged;
-    public static event Action<bool> OnActivateSceneLoadeIndicator;
-    public static event Action OnActivateBrightenScreenAnim;
+    public event Action<float> OnSceneLoadProgressChanged;
+    public event Action<bool> OnActivateSceneLoadeIndicator;
+    public event Action<bool> OnActivateBrightenScreenAnim;
 
     public void LoadScene(SceneNameEnum loadScene, SceneNameEnum unloadScene)
     {
@@ -18,7 +18,9 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
     private IEnumerator LoadSceneCoroutine(string loadSceneName, string unloadSceneName)
     {
-        yield return new WaitForSeconds(3.0f);
+        OnActivateBrightenScreenAnim?.Invoke(false); // ScreenFader
+
+        yield return new WaitForSeconds(1.0f);
 
         AsyncOperation operation = SceneManager.LoadSceneAsync(loadSceneName, LoadSceneMode.Additive);
 
@@ -55,12 +57,10 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
         if (operation.isDone)
         {
-            Debug.Log("Loade Scene Indicator deactivated!");
-
             OnActivateSceneLoadeIndicator?.Invoke(false); // SceneLoadingIndicator
-            OnActivateBrightenScreenAnim?.Invoke(); // ScreenFader
+            OnActivateBrightenScreenAnim?.Invoke(true); // ScreenFader
 
-            Debug.Log("Unload Scene " + unloadSceneName);
+            Debug.Log($"Unload Scene '{unloadSceneName}'");
 
             SceneManager.UnloadSceneAsync(unloadSceneName);
         }
