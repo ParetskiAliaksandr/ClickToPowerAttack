@@ -7,14 +7,17 @@ public class ScreenFader : MonoBehaviour
 
     private void OnEnable()
     {
-        SceneLoadManager.OnActivateBrightenScreenAnim += ActivateBrightenScreenAnim;
-
+        if(SceneLoadManager.Instance != null)
+        {
+            SceneLoadManager.Instance.OnActivateBrightenScreenAnim += ActivateBrightenScreenAnim;
+        }
+        
         _screenFaderAnimator = GetComponent<Animator>();
     }
 
-    private void ActivateBrightenScreenAnim()
+    private void ActivateBrightenScreenAnim(bool isOn)
     {
-        _screenFaderAnimator.SetTrigger("StartBrighten");
+        _screenFaderAnimator.SetBool("StartBrighten", isOn);
     }
 
     private void OnDisable()
@@ -24,6 +27,6 @@ public class ScreenFader : MonoBehaviour
             return;
         }
 
-        SceneLoadManager.OnActivateBrightenScreenAnim -= ActivateBrightenScreenAnim;
+        SceneLoadManager.Instance.OnActivateBrightenScreenAnim -= ActivateBrightenScreenAnim;
     }
 }
